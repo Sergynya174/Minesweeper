@@ -99,6 +99,7 @@ function startGame(WIDTH, HEIGHT, BOMBS_COUNT) {
       cells[index].style.backgroundSize = "contain";
       cells[index].style.border = "none";
       cells[index].disabled = true;
+      img.src = "./image/smile.png";
     }
   };
 
@@ -142,7 +143,7 @@ function startGame(WIDTH, HEIGHT, BOMBS_COUNT) {
     cell.disabled = true;
 
     if (isBomb(row, column)) {
-      bombs.forEach((item, index) => {
+      bombs.forEach((item, i) => {
         cells[item].style.backgroundImage = "url('./image/bomb.png')";
         cells[item].style.backgroundRepeat = "no-repeat";
         cells[item].style.backgroundSize = "contain";
@@ -151,6 +152,10 @@ function startGame(WIDTH, HEIGHT, BOMBS_COUNT) {
 
       cell.style.backgroundImage = "url('./image/bomb_red.png')";
       img.src = "./image/fail.png";
+
+      cells.forEach((item) => {
+        item.disabled = true;
+      });
 
       clearInterval(intervalStopWatch);
       clearInterval(intervalTimer);
