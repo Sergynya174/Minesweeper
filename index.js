@@ -144,7 +144,11 @@ function startGame(WIDTH, HEIGHT, BOMBS_COUNT) {
 
     if (isBomb(row, column)) {
       bombs.forEach((item, i) => {
-        cells[item].style.backgroundImage = "url('./image/bomb.png')";
+        if(cells[item].style.backgroundImage === "url('./image/flat.png')") {
+          cells[item].style.backgroundImage = "url('./image/bomb_close.png')";
+        } else {
+          cells[item].style.backgroundImage = "url('./image/bomb.png')";
+        }
         cells[item].style.backgroundRepeat = "no-repeat";
         cells[item].style.backgroundSize = "contain";
         cells[item].style.border = "none";
